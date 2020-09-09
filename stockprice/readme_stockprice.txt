@@ -1,6 +1,7 @@
 Question
     Given a set of stock prices across one day, what is the maximum profit a trader could have made with one purchase and sale of one share?
     Write a function that takes a time series array of 330 stock prices, one per minute from 9:30a.m. to 4p.m., and returns the maximum possible profit (sale price - purchase price) from buying and selling one share once. The sale must come after the purchase.
+    * There are actually 390 data points... :)
 
 Suggestions
     Allow the candidate to explore the problem and write a brute force approach initially if they find it helpful.
