@@ -13,32 +13,44 @@ def main():
 
     # todo: any user input
     #
-    cases = range(1,101)
+    cases = range(1, 101)
 
     for case in cases:
-        # simplistic, but handle both true without dealing with multi line issue
-        if check_fizz(case) & check_buzz(case):
-            print('FizzBuzz')
-        # only fizz true
-        elif check_fizz(case):
-            print('Fizz')
-        # only buzz true
-        elif check_buzz(case):
-            print('Buzz')
-        # neither true
-        else:
-            print(case)
+
+        case_output = fizzbuzz_logic(case)
+        print(case_output)
 
     print()
     print('(fizzbuzz) end::')
 
     return 0
 
+
+def fizzbuzz_logic(case):
+    output = ''
+
+    # simplistic, but handle both true without dealing with multi line issue
+    if check_fizz(case) & check_buzz(case):
+        output = 'FizzBuzz'
+    # only fizz true
+    elif check_fizz(case):
+        output = 'Fizz'
+    # only buzz true
+    elif check_buzz(case):
+        output = 'Buzz'
+    # neither true
+    else:
+        output = case
+
+    return output
+
+
 def check_buzz(case):
     check = False
     if (case % 5) == 0:
         check = True
     return check
+
 
 def check_fizz(case):
     check = False
