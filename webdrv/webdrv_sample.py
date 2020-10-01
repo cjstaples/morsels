@@ -34,10 +34,13 @@ def main():
 
     # todo: any user input
     #
+    service = Service('/usr/local/bin/chromedriver')
+    service.start()
 
     options = Options()
     options.page_load_strategy = 'eager'
-    driver = webdriver.Chrome(options=options)
+    # driver = webdriver.Chrome(options=options)
+    driver = webdriver.Remote(service.service_url)
 
     submall = None
     driver.get("http://www.google.com")
@@ -80,33 +83,21 @@ def main():
 def webdrv_logic(case):
     output = ''
 
-    # simplistic, but handle both true without dealing with multi line issue
-    if check_fizz(case) & check_buzz(case):
-        output = 'FizzBuzz'
-    # only fizz true
-    elif check_fizz(case):
-        output = 'Fizz'
-    # only buzz true
-    elif check_buzz(case):
-        output = 'Buzz'
-    # neither true
+    if check_romeo(case) & check_juliet(case):
+        output = 'LOVE'
     else:
         output = case
 
     return output
 
 
-def check_buzz(case):
+def check_romeo(case):
     check = False
-    if (case % 5) == 0:
-        check = True
     return check
 
 
-def check_fizz(case):
+def check_juliet(case):
     check = False
-    if (case % 3) == 0:
-        check = True
     return check
 
 
