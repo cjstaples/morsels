@@ -16,9 +16,11 @@ def submall_validation(driver, submall):
     from urllib.parse import urlparse
 
     validation_data = {
+        "submall": submall,
         "is_valid": None,
-        "header_logo": None,
+        "header_logo_src": None,
         "header_logo_path": None,
+        "url_tried": "TBA",
         "url_displayed": None
     }
 
@@ -33,7 +35,7 @@ def submall_validation(driver, submall):
 
     url_displayed = driver.current_url
 
-    validation_data["header_logo"] = logo_src
+    validation_data["header_logo_src"] = logo_src
     validation_data["header_logo_path"] = logo_path
     validation_data["url_displayed"] = url_displayed
 
@@ -43,7 +45,7 @@ def submall_validation(driver, submall):
     else:
         validation_data["is_valid"] = False
 
-    print(':: validation_data: submall: ', submall)
+    print(':: validation_data:')
     for key, value in validation_data.items():
         print('{k:>16}'.format(k=key), ' : ', '{v:>120}'.format(v=value))
     print('::::')
@@ -55,6 +57,16 @@ def main():
     print('(webdrv) main:')
     print()
 
+    urlbase = 'https://kroger-gcm.semi.cashstar.com'
+    submalls = (
+        '','bakersplus','city-market','dillons',
+        'food-4-less','foods-co','fred-meyer','frys-food',
+        'gerbes', 'jay-c-foods', 'king-soopers',
+        'marianos', 'metro-market', 'owens-market', 'payless',
+        'pick-n-save', 'qfc', 'ralphs', 'smiths',
+        'kroger'
+    )
+
     # todo: any user input
     #
     # service = Service('/usr/local/bin/chromedriver')
@@ -65,35 +77,42 @@ def main():
     driver = webdriver.Chrome(options=options)
     # driver = webdriver.Remote(service.service_url)
 
-    submall = None
-    driver.get("http://www.google.com")
-    # submall_validation_data = submall_validation(driver, submall)
-    time.sleep(5)
+    # submall = None
+    # driver.get("http://www.google.com")
+    # # submall_validation_data = submall_validation(driver, submall)
+    # time.sleep(5)
 
     submall = ""
-    driver.get("https://kroger-gcm.semi.cashstar.com/")
+    driver.get(urlbase)
     submall_validation_data = submall_validation(driver, submall)
     time.sleep(5)
 
-    submall = "bakersplus"
-    driver.get("https://kroger-gcm.semi.cashstar.com/bakersplus")
-    submall_validation_data = submall_validation(driver, submall)
-    time.sleep(5)
+    for submall in submalls:
+        url = urlbase + f'/{submall}'
+        driver.get(url)
+        submall_validation_data = submall_validation(driver, submall)
+        time.sleep(3)
 
-    submall = "city-market"
-    driver.get("https://kroger-gcm.semi.cashstar.com/city-market")
-    submall_validation_data = submall_validation(driver, submall)
-    time.sleep(5)
 
-    submall = "dillons"
-    driver.get("https://kroger-gcm.semi.cashstar.com/dillons")
-    submall_validation_data = submall_validation(driver, submall)
-    time.sleep(5)
-
-    submall = "kroger"
-    driver.get("https://kroger-gcm.semi.cashstar.com/kroger")
-    submall_validation_data = submall_validation(driver, submall)
-    time.sleep(5)
+    # submall = "bakersplus"
+    # driver.get("https://kroger-gcm.semi.cashstar.com/bakersplus")
+    # submall_validation_data = submall_validation(driver, submall)
+    # time.sleep(5)
+    #
+    # submall = "city-market"
+    # driver.get("https://kroger-gcm.semi.cashstar.com/city-market")
+    # submall_validation_data = submall_validation(driver, submall)
+    # time.sleep(5)
+    #
+    # submall = "dillons"
+    # driver.get("https://kroger-gcm.semi.cashstar.com/dillons")
+    # submall_validation_data = submall_validation(driver, submall)
+    # time.sleep(5)
+    #
+    # submall = "kroger"
+    # driver.get("https://kroger-gcm.semi.cashstar.com/kroger")
+    # submall_validation_data = submall_validation(driver, submall)
+    # time.sleep(5)
 
     driver.quit()
 
