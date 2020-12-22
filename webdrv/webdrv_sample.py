@@ -59,11 +59,24 @@ def main():
 
     urlbase = 'https://kroger-gcm.semi.cashstar.com'
     submalls = (
-        '','bakersplus','city-market','dillons',
-        'food-4-less','foods-co','fred-meyer','frys-food',
-        'gerbes', 'jay-c-foods', 'king-soopers',
-        'marianos', 'metro-market', 'owens-market', 'payless',
-        'pick-n-save', 'qfc', 'ralphs', 'smiths',
+        '',
+        'bakersplus',
+        'city-market',
+        'dillons',
+        'food-4-less',
+        'foods-co',
+        'fred-meyer',
+        'frys-food',
+        'gerbes',
+        'jay-c-foods',
+        'king-soopers',
+        'marianos',
+        'metro-market',
+        'payless',
+        'pick-n-save',
+        'qfc',
+        'ralphs',
+        'smiths',
         'kroger'
     )
 
