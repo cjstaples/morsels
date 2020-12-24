@@ -1,7 +1,6 @@
 import unittest
-import inspect
 
-from summing import sum_numbers
+from _bites._archive.summing import sum_numbers
 
 
 class MyTestCase(unittest.TestCase):
