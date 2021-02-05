@@ -42,6 +42,7 @@ if __name__ == '__main__':
 
     img_path = 'resources/monoscope_728x410.jpg'
     slide = prs.slides.add_slide(prs.slide_layouts[8])
+    print('picture shapes')
     for shape in slide.placeholders:
         print('%d %s %s %s' % (shape.placeholder_format.idx, shape.name, shape.is_placeholder, shape.placeholder_format))
         print('%d %d %d %d' % (shape.height, shape.width, shape.top, shape.left))
@@ -49,8 +50,10 @@ if __name__ == '__main__':
     create_squared_image(img_path)
     img_path = squared_image_path(img_path)
     picture = placeholder.insert_picture(img_path)
-    print ('%s %s %s %s' % (picture.crop_left, picture.crop_right, picture.crop_top, picture.crop_bottom))
-    print ('%s' % (picture.name))
+    print('picture crop values')
+    print('%s %s %s %s' % (picture.crop_left, picture.crop_right, picture.crop_top, picture.crop_bottom))
+    print('picture name')
+    print('%s' % (picture.name))
     picture.crop_top = 0
 
     img_path = 'resources/IMG_300x300_blue.png'
