@@ -22,7 +22,6 @@ class MyTestCase(unittest.TestCase):
         expected = 'bye'
         assert actual == expected
 
-
     @patch("builtins.input", side_effect=['blue', 'quit'])
     def test_one_valid_color_then_quit(input_mock, capsys):
         # user enters blue = valid color so print it
@@ -31,7 +30,6 @@ class MyTestCase(unittest.TestCase):
         actual = capsys.readouterr()[0].strip()
         expected = 'blue\nbye'
         assert actual == expected
-
 
     @patch("builtins.input", side_effect=['green', 'quit'])
     def test_one_invalid_color_then_quit(input_mock, capsys):
@@ -42,7 +40,6 @@ class MyTestCase(unittest.TestCase):
         expected = f'{NOT_VALID}\nbye'
         assert actual == expected
 
-
     @patch("builtins.input", side_effect=['white', 'red', 'quit'])
     def test_invalid_then_valid_color_then_quit(nput_mock, capsys):
         # white is not a valid color so continue the loop,
@@ -51,7 +48,6 @@ class MyTestCase(unittest.TestCase):
         actual = capsys.readouterr()[0].strip()
         expected = f'{NOT_VALID}\nred\nbye'
         assert actual == expected
-
 
     @patch("builtins.input", side_effect=['yellow', 'orange', 'quit'])
     def test_valid_then_invalid_color_then_quit(input_mock, capsys):
