@@ -45,8 +45,10 @@ def main():
     print(f"::: {dev0['os_version']}")
 
     print(f":::::::::::::::::::::::::::::::::::")
-    for item in [dev0, dev1, dev2]:
-        print(f"::: {item}")
+    devlist = [dev0, dev1, dev2]
+
+    for idx, item in enumerate(devlist):
+        print(f"::: {idx} - {item}")
         print(f"--- ---------------------------")
 
     print()
