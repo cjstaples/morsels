@@ -10,22 +10,23 @@ def generate_test_docs(jira_input):
     if not jira_list:
         return 0
     else:
-        print('(generate_test_docs) jira_list::',jira_list)
+        print('(generate_test_docs) jira_list::', jira_list)
         for l in jira_list:
-            print('(generate_test_docs) item::',l)
+            print('(generate_test_docs) item::', l)
             generate_single_doc(l)
         return 1
+
 
 def generate_single_doc(jira_number):
     if os.path.isfile(jira_number):
         print('(generate_single_doc) found::', jira_number)
-    # filepath = ".\output\"+jira_number"
+    filepath = f"./output/{jira_number}_testing.txt"
     # filepath = jira_number+"_testing.txt"
-    filepath = "output//"+jira_number+"_testing.txt"
+    # filepath = "output//"+jira_number+"_testing.txt"
     file = open(filepath, "w")
-    file.write(jira_number+" -- SUMMARY-PLACEHOLDER\n")
+    file.write(jira_number + " -- SUMMARY-PLACEHOLDER\n")
     file.write("\n")
-    file.write("https://cashstar.atlassian.net/browse/"+jira_number+"\n")
+    file.write("https://cashstar.atlassian.net/browse/" + jira_number + "\n")
     file.write("\n")
     file.write("=====================================================\n")
     file.write("\n")
@@ -61,26 +62,29 @@ def generate_single_doc(jira_number):
 
     file.close()
 
+
 def generate_sprint_begin_marker(new_sprint):
-    print('(generate_sprint_begin_marker) gen_sprint_marker:: SPRINT:',new_sprint)
+    print('(generate_sprint_begin_marker) gen_sprint_marker:: SPRINT:', new_sprint)
     sprint_number = str(new_sprint)
 
-    filepath = "output//sprint_"+sprint_number+"_marker.txt"
+    filepath = "sprint_" + sprint_number + "_marker.txt"
     if os.path.isfile(filepath):
         print('(generate_sprint_begin_marker) found::', sprint_number)
 
     file = open(filepath, "w")
-    file.write(sprint_number+" -- BEGIN-SPRINT MARKER\n")
+    file.write(sprint_number + " -- BEGIN-SPRINT MARKER\n")
     file.write("\n")
     file.write("================================================\n")
 
     file.close()
     return
 
+
 def get_new_sprint():
     print('(gns) get_new_sprint:: PLACEHOLDER')
     # sprint 157; 2019-03-21 to 2019-04-03
     return '157'
+
 
 def load_jiras():
     with open("data/jira_input.txt", "r") as ins:
@@ -96,15 +100,14 @@ def main():
     print()
 
     new_sprint = get_new_sprint()
-    print('(testdocs) sprint::  ',new_sprint)
+    print('(testdocs) sprint::  ', new_sprint)
 
     generate_sprint_begin_marker(new_sprint)
-
 
     jira_list = load_jiras()
 
     genstatus = generate_test_docs(jira_list)
-    print('(main) genstatus::',genstatus)
+    print('(main) genstatus::', genstatus)
 
     print()
     print('(testdocs) end::')

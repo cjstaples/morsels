@@ -1,19 +1,18 @@
-#  flatten a directory structure
-#  assemble the result content in-place or to a target location
+#  fix an insufficient claxx
 #
 
 import sys
 
 
 def main():
-    print('(flatten) main:')
+    print('(fix_claxx) main:')
     print()
 
     # todo: user input
     #
 
     print()
-    print('(flatten) end::')
+    print('(fix_claxx) end::')
 
     return 0
 
