@@ -1,3 +1,6 @@
+#   URL Checker for Company Careers sites
+#   based on AI generated code
+
 import requests
 from requests.adapters import HTTPAdapter
 from urllib3.util.retry import Retry
@@ -18,6 +21,17 @@ def is_url_valid(url, session):
         return False
 
 
+def verify_base_url(url, session):
+    print(f"verifying {url}...")
+    return is_url_valid(url, session)
+
+
+def verify_base_careers_url(url, session):
+    url_careers = url + '/careers'
+    print(f"::  verifying careers {url_careers}...")
+    return is_url_valid(url_careers, session)
+
+
 def main():
     file_path = 'urls.txt'  # Path to the text file containing URLs
     urls = read_urls_from_file(file_path)
@@ -32,12 +46,22 @@ def main():
     session = requests.Session()
     session.mount("http://", adapter)
     session.mount("https://", adapter)
+    base_valid = False
 
     for url in urls:
-        if is_url_valid(url, session):
-            print(f"{url} is valid.")
+        base_valid = verify_base_url(url, session)
+
+        if base_valid:
+            print(f"::  {url} is valid.")
+            base_careers_valid = verify_base_careers_url(url, session)
+            if base_careers_valid:
+                print(f"::  {url}/careers is valid!")
+
+
         else:
-            print(f"{url} is not valid.")
+            print(f"::  {url} is invalid. Not checking sub urls.")
+
+        print(f"-" * 60)
 
 
 if __name__ == "__main__":
