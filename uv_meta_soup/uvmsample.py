@@ -32,6 +32,14 @@ def search_books(term: str):
     resp.raise_for_status()
 
     books = []
+    for item in resp.json().get("items", []):
+        try:
+            google_id = item["id"]
+            title = item["volumeInfo"]["title"]
+            books.append((google_id, title))
+        except KeyError:
+            continue
+
     return books
 
 def get_book_details(book_id: str):
