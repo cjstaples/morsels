@@ -27,6 +27,10 @@ SEARCH_URL = BASE_URL + "?q={}&langRestrict=en"
 
 def search_books(term: str):
     """Search books by term."""
+    query = SEARCH_URL.format(term)
+    resp = httpx.get(query)
+    resp.raise_for_status()
+
     books = []
     return books
 
@@ -40,7 +44,18 @@ def clean_and_shorten_description(description: str, max_length: int = 300):
     pass
     return
 
+@app.command()
+def search(terms: list[str] = typer.Argument(..., help="Book Search Terms")):
+    search_string = " ".join(terms)
+    books = search_books(search_string)
 
+    if not books:
+        typer.echo("No books found.")
+        raise typer.Exit()
+
+    typer.echo("Books found:")
+    for idx, (book_id, title) in enumerate(books, start = 1):
+        typer.echo(f"{idx}, {title}")
 
 if __name__ == '__main__':
 
@@ -49,7 +64,7 @@ if __name__ == '__main__':
     print(":::")
 
     print("===")
-    # app()
+    app()
     print("===")
 
     print(":::")
