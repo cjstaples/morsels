@@ -75,6 +75,23 @@ def search(terms: list[str] = typer.Argument(..., help="Book Search Terms")):
     selection = typer.prompt(
         "Enter the number of the book you want details for:", type=int
     )
+    if selection < 1 or selection > len(books):
+        typer.echo("* Invalid selection *")
+        raise typer.Exit()
+
+    selected_book_id = books[selection - 1][0]
+    typer.echo("...fetching details...")
+
+    details = get_book_details(selected_book_id)
+    typer.echo("")
+    typer.echo("")
+    typer.echo("")
+    typer.echo("")
+    typer.echo("")
+    typer.echo("")
+    description = details.get("description", "N/A")
+    typer.echo(f"Description: {clean_and_shorten_description(description, max_length=80)}")
+
 
 
 if __name__ == '__main__':
