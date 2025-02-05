@@ -83,15 +83,14 @@ def search(terms: list[str] = typer.Argument(..., help="Book Search Terms")):
     typer.echo("...fetching details...")
 
     details = get_book_details(selected_book_id)
-    typer.echo("")
-    typer.echo("")
-    typer.echo("")
-    typer.echo("")
-    typer.echo("")
-    typer.echo("")
-    description = details.get("description", "N/A")
-    typer.echo(f"Description: {clean_and_shorten_description(description, max_length=80)}")
-
+    typer.echo("\n*** Book Details ***")
+    typer.echo(f"Title:              {details.get('title', 'n/a')}")
+    typer.echo(f"Subtitle:           {details.get('subtitle', 'n/a')}")
+    typer.echo(f"Authors:            {', '.join(details.get('authors', []))}")
+    typer.echo(f"Publisher:          {details.get('publisher', 'n/a')}")
+    typer.echo(f"Published Date:     {details.get('publishedDate', 'n/a')}")
+    description = details.get("description", "n/a")
+    typer.echo(f"Description:        {clean_and_shorten_description(description, max_length=80)}")
 
 
 if __name__ == '__main__':
