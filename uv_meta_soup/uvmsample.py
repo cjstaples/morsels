@@ -39,7 +39,6 @@ def search_books(term: str):
             books.append((google_id, title))
         except KeyError:
             continue
-
     return books
 
 
@@ -61,13 +60,21 @@ def search(terms: list[str] = typer.Argument(..., help="Book Search Terms")):
     search_string = " ".join(terms)
     books = search_books(search_string)
 
+    typer.echo("----------------------------------------")
+    typer.echo(f"--  searching for: [ {search_string} ]")
+    typer.echo("----------------------------------------")
     if not books:
         typer.echo("No books found.")
         raise typer.Exit()
 
     typer.echo("Books found:")
     for idx, (book_id, title) in enumerate(books, start=1):
-        typer.echo(f"{idx}, {title}")
+        typer.echo(f"*  {idx} :: {title}")
+
+    typer.echo("----------------------------------------")
+    selection = typer.prompt(
+        "Enter the number of the book you want details for:", type=int
+    )
 
 
 if __name__ == '__main__':
