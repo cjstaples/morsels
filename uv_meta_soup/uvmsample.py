@@ -6,9 +6,11 @@
 # ]
 # ///
 
-#   uv / metadata sample
-#   Based on code by Bob Belderbos / PyBites
+#   uv / metadata example
+#   using sample google api book search typer app
 #
+#   Based on code by Bob Belderbos / PyBites
+#   https://pybit.es/articles/create-project-less-python-utilities-with-uv-and-inline-script-metadata/
 
 import sys
 import textwrap

@@ -3,7 +3,7 @@ import sys
 
 
 def matches_pairs(pairs, items):
-    # return all(pair in item for pair in pairs)
+    # return all(pair in item for pair in Pairs)
     verbose = False
     results = []
     for pair in pairs:

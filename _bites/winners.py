@@ -2,7 +2,7 @@ games_won = dict(sara=0, bob=1, tim=5, julian=3, jim=1)
 
 
 def print_game_stats(games_won):
-    """Loop through games_won's dict (key, value) pairs (dict.items)
+    """Loop through games_won's dict (key, value) Pairs (dict.items)
        printing (print, not return) how many games each person has won,
        pluralize 'game' based on number.
 
