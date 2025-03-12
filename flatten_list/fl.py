@@ -3,17 +3,23 @@
 #
 
 import sys
+from more_itertools import collapse
 
 # ---------------
 
 def main():
-    print('(template) main:')
+    print('(flatten list) main:')
     print()
 
-    # todo: user input
-    #
+    deeply_nested_list_1 = [[[12, 13], [[14, 15, 16]]]]
+    flattened_list_1 = collapse(deeply_nested_list_1)
+    print(list(flattened_list_1))
 
-    print('(template) end::')
+    deeply_nested_list_2 = [[[12, 13], [14, 15, 16], [[14, 15, 16]]]]
+    flattened_list_2 = sorted(collapse(deeply_nested_list_2))
+    print(str(list(flattened_list_2))+'\n')
+
+    print('(flatten list) end::')
     return 0
 
 # ----------------------------------------
