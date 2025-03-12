@@ -5,8 +5,8 @@ setup(
       name = 'AllPairs'
     , version = '2.0.1'
     , description = 'Pairwise test combinations generator'
-    , long_description = '''Pairwise (aka "all-pairs") test combinations generator written in
-Python. Allows one to create a set of tests using "pairwise 
+    , long_description = '''Pairwise (aka "all-Pairs") test combinations generator written in
+Python. Allows one to create a set of tests using "optimized_matrix 
 combinations" method, reducing a number of combinations of variables
 into a lesser set that covers most situations.
 '''

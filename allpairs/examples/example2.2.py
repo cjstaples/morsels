@@ -1,7 +1,7 @@
 import functools
 
 import metacomm.combinatorics.all_pairs2
-all_pairs = metacomm.combinatorics.all_pairs2.all_pairs2
+all_pairs = metacomm.combinatorics.MyPairs.MyPairs
 
 
 """

@@ -1,9 +1,9 @@
 import metacomm.combinatorics.all_pairs2
-all_pairs = metacomm.combinatorics.all_pairs2.all_pairs2
+all_pairs = metacomm.combinatorics.MyPairs.MyPairs
 
 """
-Demo of the basic functionality - just getting pairwise combinations
-and skipping previously tested pairs.
+Demo of the basic functionality - just getting optimized_matrix combinations
+and skipping previously tested Pairs.
 """
 
 

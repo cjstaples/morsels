@@ -65,7 +65,7 @@ class all_pairs2:
         assert( len(self.__pairs) <= self.__max_unique_pairs_expected )
         p = self.__pairs
         if len(self.__pairs) == self.__max_unique_pairs_expected:
-            # no reasons to search further - all pairs are found
+            # no reasons to search further - all Pairs are found
             raise StopIteration
         
         previous_unique_pairs_count= len(self.__pairs)
@@ -106,7 +106,7 @@ class all_pairs2:
         self.__pairs.add_sequence( chosen_values_arr )
 
         if len(self.__pairs) == previous_unique_pairs_count:
-            # could not find new unique pairs - stop
+            # could not find new unique Pairs - stop
             raise StopIteration
         
         # replace returned array elements with real values and return it
@@ -124,8 +124,8 @@ class all_pairs2:
                 # numbers of new combinations to be created if this item is appended to array
                 new_combs.append( set([pairs_storage.key(z) for z in xuniqueCombinations( chosen_values_arr+[item], i+1)]) - self.__pairs.get_combs()[i] )
             # weighting the node
-            item.weights =  [ -len(new_combs[-1]) ]    # node that creates most of new pairs is the best
-            item.weights += [ len(data_node.out) ] # less used outbound connections most likely to produce more new pairs while search continues
+            item.weights =  [ -len(new_combs[-1]) ]    # node that creates most of new Pairs is the best
+            item.weights += [ len(data_node.out) ] # less used outbound connections most likely to produce more new Pairs while search continues
             item.weights += [ len(x) for x in reversed(new_combs[:-1])]
             item.weights += [ -data_node.counter ]  # less used node is better
             item.weights += [ -len(data_node.in_) ] # otherwise we will prefer node with most of free inbound connections; somehow it works out better ;)

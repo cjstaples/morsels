@@ -1,3 +1,4 @@
+from itertools import permutations
 
 #===============================================================================
 # code from http://aspn.activestate.com/ASPN/Cookbook/Python/Recipe/190465
